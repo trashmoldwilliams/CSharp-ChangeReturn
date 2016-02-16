@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 namespace AnagramNS.Objects
 {
@@ -17,16 +18,13 @@ namespace AnagramNS.Objects
     {
       char[] primaryArray = word.ToCharArray();
       Array.Sort(primaryArray);
-      Console.WriteLine("Primary" + primaryArray);
-      List<string> anagramList = new List<string>();
+      List<string> anagramList = new List<string>(){};
 
       for(var i = 0; i < _wordList.Count; i++)
       {
         char[] currentWordArray = _wordList[i].ToCharArray();
         Array.Sort(currentWordArray);
-        Console.WriteLine(currentWordArray);
-        // char [] sortedWordArray = Array.Sort(currentWordArray)
-        if (primaryArray == currentWordArray)
+        if (primaryArray.SequenceEqual(currentWordArray))
         {
           Console.WriteLine("matched");
           anagramList.Add(_wordList[i]);
@@ -35,6 +33,14 @@ namespace AnagramNS.Objects
 
       return anagramList;
     }
+
+    public static List<string> GetWordList ()
+    {
+      return _wordList;
+    }
+
+
+
 
 
   } // end class

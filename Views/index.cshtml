@@ -1,0 +1,13 @@
+<h1>Test to see if your word is an anagram of any words on our list</h1>
+
+<ul>
+@foreach(var word in Model)
+{
+  <li>@word</li>
+}
+</ul>
+
+<form action="/updatePage" method="post">
+<input name = "inputWord" placeholder = "Your Word Here"></input>
+<button>Click Me</button>
+</form>
